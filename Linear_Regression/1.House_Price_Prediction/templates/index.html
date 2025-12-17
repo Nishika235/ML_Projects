@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2d3748;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function clearResult(){
+            document.getElementById('result').style.display="none"
+        }
+    </script>
+</head>
+
+<body>
+    <div class="card">
+        <h2>🏠 House Price Prediction</h2>
+        <form action="/predict" method="post">
+            <input type="number" name="area" placeholder="Enter area in sqft" required oninput="clearResult()">
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if result %}
+        <div class="result" id="result">
+            {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
